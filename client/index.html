@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>My Foods Menu</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="https://use.typekit.net/nhw3aqu.css" />
+
+  <style>
+    * {
+      font-family: 'proxima-nova';
+    }
+
+    .background {
+      background-color: #f8fafc;
+    }
+
+    .text-grey {
+      color: #606f7b;
+    }
+
+    .text-grey-light {
+      color: #b8c2cc;
+    }
+
+    .text-blue {
+      color: blue;
+    }
+
+    .card {
+      border: none;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+      /* border-radius: 0.25rem; */
+    }
+
+    .list-none {
+      list-style: none;
+      padding: 0;
+    }
+
+    .cursor-pointer {
+      cursor: pointer;
+    }
+
+    .tag:hover {
+      color: #0069d9;
+    }
+  </style>
+</head>
+
+<body class="background">
+
+  <!-- Login -->
+  <div class="container my-3">
+    <div class="row">
+      <div class="col-12 p-0 text-center">
+        <img src="/assets/security.svg" alt="" style="height:40%;" />
+        <h5 class="font-weight-light mb-3">You shall not pass, please verify your identity</h5>
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <form>
+              <div class="form-group">
+                <label for="exampleInputEmail1" class="text-left">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                  placeholder="Enter email" />
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputPassword">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword" aria-describedby="emailHelp"
+                  placeholder="Enter password" />
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">Log In</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full App -->
+  <div class="container my-3">
+    <nav class="navbar navbar-light bg-light">
+      <button class="btn btn-primary ml-auto">
+        Logout
+      </button>
+    </nav>
+    <div class="row">
+
+      <!-- Add New Food -->
+      <div class="col-md-10">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="font-weight-light mb-3">Add New Food</h5>
+            <form>
+              <div class="row">
+                <div class="col-md-12">
+                  <input type="text" class="form-control my-2" placeholder="Food name">
+                  <input type="price" class="form-control my-2" placeholder="Price" min="0">
+                  <div class="form-group my-2">
+                    <textarea class="form-control" rows="3" placeholder="Ingredients"></textarea>
+                  </div>
+                  <label for="tag">Choose food tag:</label>
+                  <select class="form-control">
+                    <option value="ayam">ayam</option>
+                    <option value="ikan">ikan</option>
+                    <option value="other">other</option>
+                  </select>
+                </div>
+                <div class="col-md-8 mx-auto mt-3"><button class="btn btn-primary btn-block"
+                    type="submit">Submit</button></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="pb-0 col-12">
+        <div class="card-body pb-0">
+          <h3 class="font-weight-light">My Foods</h3>
+        </div>
+      </div>
+
+      <!-- List Food -->
+      <div class="col-md-10">
+        <div class="card">
+          <div class="card-body pb-0">
+            <div class="d-flex justify-content-between mb-0">
+              <div class="col-9">
+                <h5 class="font-weight-bold">Ayam Geprek </h5>
+                <p>Rp.18000</p>
+              </div>
+              <div class="col-3 d-flex align-items-baseline">
+                <i class="fas fa-tag text-grey mr-2"></i>
+                <p class="text-grey">ayam</p>
+                <button class="fas fa-trash text-danger ml-auto cursor-pointer"></button>
+              </div>
+            </div>
+            <div class="card-body border-bottom">
+              250 gr daging ayam (saya pakai fillet), Secukupnya gula dan garam, 50-100 gr tepung ayam serbaguna,
+              Secukupnya lalapan (kemangi,kol,timun), Secukupnya minyak panas, ❤sambal korek, Secukupnya cabe rawit
+              merah dan bwg putih
+            </div>
+
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body pb-0">
+            <div class="d-flex justify-content-between mb-0">
+              <div class="col-9">
+                <h5 class="font-weight-bold">Ayam Suwir Sambal Matah </h5>
+                <p>Rp.25000</p>
+              </div>
+              <div class="col-3 d-flex align-items-baseline">
+                <i class="fas fa-tag text-grey mr-2"></i>
+                <p class="text-grey">ayam</p>
+                <button class="fas fa-trash text-danger ml-auto cursor-pointer"></button>
+              </div>
+            </div>
+            <div class="card-body border-bottom">
+              1/2 ekor ayam, 5 bawang merah, 8 buah cabai merah, 3 cabai rawit, 1/2 bungkus terasi ABC: dibakar lalu
+              haluskan, 1 lbr daun jeruk, 1 btg serai, 1/2 bh jeruk limau, Secukupnya garam, gula, penyedap rasa
+              (opsional), Secukupnya minyak untuk menumis
+            </div>
+
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body pb-0">
+            <div class="d-flex justify-content-between mb-0">
+              <div class="col-9">
+                <h5 class="font-weight-bold">Pepes Patin </h5>
+                <p>Rp.30000</p>
+              </div>
+              <div class="col-3 d-flex align-items-baseline">
+                <i class="fas fa-tag text-grey mr-2"></i>
+                <p class="text-grey">ikan</p>
+                <button class="fas fa-trash text-danger ml-auto cursor-pointer"></button>
+              </div>
+            </div>
+            <div class="card-body border-bottom">
+              1 kg ikan patin, 12 siung bawang merah, 6 siung bawang putih, 7 siung biji kemiri, 10 cm ruas kunyit, 50
+              ml perasan air jeruk nipis, 250 ml Air, secukupnya Garam, secukupnya Gula, sesuai selera Cabai rawit utuh,
+              Buah tomat, Daun bawang, Daun kemangi, Tusukan gigi, Daun pisang
+            </div>
+
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body pb-0">
+            <div class="d-flex justify-content-between mb-0">
+              <div class="col-9">
+                <h5 class="font-weight-bold">Ikan Gurame Bakar </h5>
+                <p>Rp.30000</p>
+              </div>
+              <div class="col-3 d-flex align-items-baseline">
+                <i class="fas fa-tag text-grey mr-2"></i>
+                <p class="text-grey">ikan</p>
+                <button class="fas fa-trash text-danger ml-auto cursor-pointer"></button>
+              </div>
+            </div>
+            <div class="card-body border-bottom">
+              1 kg ikan gurame, Jeruk nipis, Kecap manis pedas, 7 cabe merah, 7 bawang merah, 3 bawang putih, 3 kemiri,
+              1 sdt ketumar, Jahe, Kunyit, 3 sdt gula, 3 sdt garam
+            </div>
+
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body pb-0">
+            <div class="d-flex justify-content-between mb-0">
+              <div class="col-9">
+                <h5 class="font-weight-bold">Batagor </h5>
+                <p>Rp.30000</p>
+              </div>
+              <div class="col-3 d-flex align-items-baseline">
+                <i class="fas fa-tag text-grey mr-2"></i>
+                <p class="text-grey">other</p>
+                <button class="fas fa-trash text-danger ml-auto cursor-pointer"></button>
+              </div>
+            </div>
+            <div class="card-body border-bottom">
+              3 kotak ukuran kecil tahu kuning, 5 sdm tepung terigu, 1/2 sdm mentega (supaya kriuk2), 2 buah bawang
+              putih, Garam (secukupnya), Merica (secukupnya), Air putih matang (secukupnya), 2 sdm saus cabe (saya pake
+              indofo**), 1/2 siung bawang putih, 2 cabe rawit, Kecap (secukupnya), Air matang (secukupnya)
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
