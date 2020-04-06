@@ -13,6 +13,13 @@
     integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" />
 
   <link rel="stylesheet" href="https://use.typekit.net/nhw3aqu.css" />
+  <!-- jquery -->
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <!-- main jquery -->
+  <script src="js/main.js"></script>
 
   <style>
     * {
@@ -59,23 +66,23 @@
 <body class="background">
 
   <!-- Login -->
-  <div class="container my-3">
+  <div class="container my-3" id="login-form">
     <div class="row">
       <div class="col-12 p-0 text-center">
         <img src="/assets/security.svg" alt="" style="height:40%;" />
         <h5 class="font-weight-light mb-3">You shall not pass, please verify your identity</h5>
         <div class="row">
           <div class="col-md-6 mx-auto">
-            <form>
+            <form id="login">
               <div class="form-group">
                 <label for="exampleInputEmail1" class="text-left">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
                   placeholder="Enter email" />
               </div>
 
               <div class="form-group">
                 <label for="exampleInputPassword">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword" aria-describedby="emailHelp"
+                <input type="password" class="form-control" id="password" aria-describedby="emailHelp"
                   placeholder="Enter password" />
               </div>
 
@@ -88,9 +95,9 @@
   </div>
 
   <!-- Full App -->
-  <div class="container my-3">
+  <div class="container my-3" id="full-app">
     <nav class="navbar navbar-light bg-light">
-      <button class="btn btn-primary ml-auto">
+      <button class="btn btn-primary ml-auto" id="logout">
         Logout
       </button>
     </nav>
@@ -101,16 +108,16 @@
         <div class="card mb-4">
           <div class="card-body">
             <h5 class="font-weight-light mb-3">Add New Food</h5>
-            <form>
+            <form id="add-food">
               <div class="row">
                 <div class="col-md-12">
-                  <input type="text" class="form-control my-2" placeholder="Food name">
-                  <input type="price" class="form-control my-2" placeholder="Price" min="0">
+                  <input type="text" class="form-control my-2" placeholder="Food name" id="food-name">
+                  <input type="price" class="form-control my-2" placeholder="Price" min="0" id="price">
                   <div class="form-group my-2">
-                    <textarea class="form-control" rows="3" placeholder="Ingredients"></textarea>
+                    <textarea class="form-control" rows="3" placeholder="Ingredients" id="ingredients"></textarea>
                   </div>
                   <label for="tag">Choose food tag:</label>
-                  <select class="form-control">
+                  <select class="form-control" id="tag">
                     <option value="ayam">ayam</option>
                     <option value="ikan">ikan</option>
                     <option value="other">other</option>
@@ -131,7 +138,7 @@
       </div>
 
       <!-- List Food -->
-      <div class="col-md-10">
+      <div class="col-md-10" id="list-food">
         <div class="card">
           <div class="card-body pb-0">
             <div class="d-flex justify-content-between mb-0">
