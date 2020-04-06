@@ -21,7 +21,9 @@ class UserController {
         res.status(201).json({access_token: token});
       })
       .catch(err => {
-        console.log(err)
+        if(err.name === 'SequelizeValidationError') {
+          return res.status(404).json({message: 'Email or Password are required'})
+        }
         res.status(500).json(err)
       })
   }
@@ -43,7 +45,10 @@ class UserController {
       })
       .catch(err => {
         if(err.message == 'User not found') {
-          res.status(404).json({ message: err.message })
+          return res.status(404).json({ message: err.message })
+        }
+        if(err.message == 'Password Or email Wrong') {
+          return res.status(400).json({ message: err.message })
         }
         res.status(500).json(err)
         console.log(err)
@@ -101,10 +106,8 @@ class FoodController{
   
   static destroyFood(req, res, next) {
     // middleware
-    console.log(req.headers, 'headers')
     if(req.headers.access_token) {
       const token = req.headers.access_token
-      console.log(token, 'token')
       let user = jwt.verify(token, 'secret', {expiresIn: '1h'}).id
       let foundFood
       // 

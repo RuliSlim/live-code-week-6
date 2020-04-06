@@ -20,14 +20,18 @@ $(document).ready(function() {
       }
     })
     .done(user => {
-      console.log(user, 'user')
+      $('#alert').empty();
       tokenUser = user.access_token
       localStorage.setItem('access_token', tokenUser)
       console.log(token)
       checkUser();
     })
     .catch(err => {
-      console.log(err)
+      $('#alert').appen(`
+      <div class="alert alert-primary" role="alert">
+        ${err.message}
+      </div>
+      `);
     })
   })
 
@@ -36,6 +40,7 @@ $(document).ready(function() {
     e.preventDefault();
     localStorage.removeItem('access_token');
     // $('.container').hide();
+    $('#alert').empty();
     checkUser();
   })
 
@@ -54,11 +59,19 @@ $(document).ready(function() {
       headers: {'access_token': token}
     })
     .done(result => {
+      $('#alert').empty();
       checkUser();
-      console.log(result)
+      $('#tag').val('');
+      $('#price').val('');
+      $('#food-name').val('');
+      $('#ingredients').val('');
     })
     .catch(err => {
-      console.log(err)
+      $('#alert').appen(`
+      <div class="alert alert-primary" role="alert">
+        ${err.message}
+      </div>
+      `);
     })
   })
 
@@ -72,21 +85,20 @@ $(document).ready(function() {
       headers: {'access_token': token}
     })
     .done(msg => {
-      console.log(msg)
       let message = msg.message
-      // $('#alert').append(`
-      // <div class="alert alert-primary" role="alert">
-      //   ${message}
-      // </div>
-      // `)
+      $('#alert').append(`
+      <div class="alert alert-primary" role="alert">
+        ${message}
+      </div>
+      `)
       checkUser();
     })
     .catch(err => {
-      $('#alert').append(`
+      $('#alert').appen(`
       <div class="alert alert-primary" role="alert">
         ${err.message}
       </div>
-      `)
+      `);
     })
   })
 })
@@ -94,13 +106,12 @@ $(document).ready(function() {
 
 function checkUser() {
   $('.container').hide();
+  $('#alert').show();
   token = localStorage.getItem('access_token');
   if (token) {
-    $('.container').hide();
-    console.log('Login')
     $('#login-form').hide();
     $('#full-app').show();
-
+    $('#list-food').empty();
     // get foods
     $.ajax({
       method: 'GET',
@@ -108,7 +119,6 @@ function checkUser() {
       headers: {'access_token': token}
     })
     .done(foods => {
-      console.log(foods, 'food fungsi')
       foods.foods.forEach(el => {
         $('#list-food').append(`
         <div class="card">
@@ -134,16 +144,15 @@ function checkUser() {
       })
     })
     .catch(err => {
-      console.log(err)
+      $('#alert').appen(`
+      <div class="alert alert-primary" role="alert">
+        ${err.message}
+      </div>
+      `);
     })
 
   } else {
-    $('.container').hide();
     $('#login-form').show();
     console.log('not login')
   }
-}
-
-function getFoods() {
-
 }
