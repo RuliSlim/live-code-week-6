@@ -79,10 +79,13 @@ class FoodController{
 
   static getAll(req, res, next) {
     // middleware
+    console.log(req.headers, 'headers')
     if(req.headers.access_token) {
       const token = req.headers.access_token
       console.log(token, 'token')
       let user = jwt.verify(token, 'secret', {expiresIn: '1h'}).id
+
+      // 
       Food.findAll({where: {UserId: user}})
         .then(foods => {
           res.status(200).json({foods})
@@ -92,7 +95,38 @@ class FoodController{
           res.status(500).json({err})
         })
     } else {
-      res.status(400).json({ message: 'You are not authorized' })
+      res.status(400).json({ message: 'You Have To Login' })
+    }
+  }
+  
+  static destroyFood(req, res, next) {
+    // middleware
+    console.log(req.headers, 'headers')
+    if(req.headers.access_token) {
+      const token = req.headers.access_token
+      console.log(token, 'token')
+      let user = jwt.verify(token, 'secret', {expiresIn: '1h'}).id
+      let foundFood
+      // 
+      Food.findOne({where: {id: req.params.id}})
+        .then(food => {
+          // console.log(food, 'food nih')
+          foundFood = food
+          if(food.UserId === user) {
+            return Food.destroy({where: {id: req.params.id}})
+          } else {
+            throw new Error('You are not authorized')
+          }
+        })
+        .then(food => {
+          res.status(200).json({ message: 'Successfully delete food from your menu'})
+        })
+        .catch(err => {
+          console.log(err)
+          res.status(500).json({err})
+        })
+    } else {
+      res.status(400).json({ message: 'You Have To Login' })
     }
   }
 }
@@ -102,14 +136,19 @@ module.exports = {
   FoodController
 }
 
+// ## **Release 4 - Delete Food**
+
+// ### **Server**
+
+// Buatlah endpoint untuk menghapus food dari user yang sedang login dengan ketentuan sebagai berikut:
+
 // - route:
-//   - `GET /foods`
+//   - `DELETE /foods/:id`
 // - request
 //   - headers
 //     - `{ access_token }`
-// - response
-//   - `200`: `[{ "id": 1, "title": "Ayam Bakar Madu", "price": 10000, "ingredients": "Ayam, Madu, Kecap", "tag": "ayam", "UserId": 1 }, ...]`
+// - response:
+//   - `200`: `{ "message": "Successfully delete food from your menu"  }`
 
-// notes :
-
-// - Pastikan **hanya** user yang sedang login yang dapat mendapatkan data foods dan hanya foods dengan UserId sesuai user yang login.
+// notes : 
+// - Pastikan disisi server maupun client user **HANYA** bisa menghapus food miliknya sendiri (Authorization)
